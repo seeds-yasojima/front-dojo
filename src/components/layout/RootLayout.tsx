@@ -11,7 +11,7 @@ export const RootLayout: React.FC<Props> = ({ children }) => {
     <div className="grid h-screen grid-rows-[auto,1fr,auto]">
       <Header />
       <main className="bg-slate-50">
-        <div className="container mx-auto py-6">{children}</div>
+        <div className="container mx-auto py-6 px-4 sm:px-0">{children}</div>
       </main>
       <Footer />
     </div>

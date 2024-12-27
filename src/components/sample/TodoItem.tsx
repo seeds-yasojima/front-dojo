@@ -9,8 +9,8 @@ import { TodoItemButton } from "./TodoItemButton";
 
 type Props = {
   todo: Todo;
-  onCheckTodo: (e: boolean, todo: Todo) => void;
   onDelete: (id: number) => void;
+  onCheckTodo: (id: number, value: boolean) => void;
   onChangeTitle: (id: number, title: string) => void;
 };
 
@@ -31,6 +31,9 @@ export const TodoItem: React.FC<Props> = ({
   /** `isEditing`がtrueになったときにフォーカスを実行 */
   useEffect(() => {
     if (isEditing && inputRef.current) {
+      // フォーカスを実行
+      // Point: inputRef.currentはuseRefで作成したinput要素の参照
+      // focus()メソッドを実行することでinput要素にフォーカスが実行される
       inputRef.current.focus();
     }
   }, [isEditing]);
@@ -41,7 +44,7 @@ export const TodoItem: React.FC<Props> = ({
         <Checkbox
           id={`${todo.id}`}
           className="data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600"
-          onCheckedChange={(e) => onCheckTodo(e as boolean, todo)}
+          onCheckedChange={(value) => onCheckTodo(todo.id, value as boolean)}
         />
         {isEditing ? (
           <Input

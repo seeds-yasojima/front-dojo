@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -20,10 +20,11 @@ export type Todo = {
 const initialTodoList: Todo[] = [];
 
 export const TodoList = () => {
-  const [todoList, setTodoList] = useState(initialTodoList);
+  const [todoList, setTodoList] = useState<Todo[]>(initialTodoList);
   const [newTodoTitle, setNewTodoTitle] = useState("");
 
   const handleChangeNewTodoTitle = (value: string) => {
+    // 新規Todoのタイトルを更新（valueには入力されたテキストが入っています。）
     setNewTodoTitle(value);
   };
 
@@ -31,9 +32,8 @@ export const TodoList = () => {
   const handleDelete = (id: number) => {
     if (confirm("削除しますか？")) {
       // 対象のidを省いたtodoList
+      // Point: filterメソッドを使用して、削除対象のID以外のTodoを抽出
       const deletedTodoLists = todoList.filter((todo) => todo.id !== id);
-
-      console.log(deletedTodoLists);
 
       // Todoリストを更新
       setTodoList(deletedTodoLists);
@@ -42,48 +42,45 @@ export const TodoList = () => {
 
   /** 新規登録 */
   const handleCreate = (e: React.FormEvent<HTMLFormElement>) => {
+    // デフォルトのイベントをキャンセル
     e.preventDefault();
 
     // 新規のTodoタイトルが未入力の場合は何もしない
-    if (!newTodoTitle) {
-      return;
-    }
+    if (!newTodoTitle) return;
 
+    // 新規のTodoアイテムを作成
     const newTodoItem = {
       id: Math.floor(Math.random() * 10000), // ランダムな値。今回は新規のIDとして用いてます。
-      title: newTodoTitle, // 入力されたタイトル
+      title: newTodoTitle, // 今回入力されたタイトル（Point:useStateで管理しているnewTodoTitleが入ります）
       isComplete: false, // 完了フラグ 初期値はfalse(= 未完了)
     };
 
-    // 新規のTodoを先頭に追加
+    // 新規のTodoアイテムを配列の先頭に追加
+    // Point：スプレッド構文を使用して、newTodoItemを先頭に追加
     const newTodoList = [newTodoItem, ...todoList];
-
-    console.log(newTodoList);
 
     // Todoリストを更新
     setTodoList(newTodoList);
 
-    // 入力欄をクリア
+    // 空文字をセットすることで入力欄をクリア
     setNewTodoTitle("");
   };
 
   /** チェックボックス */
-  const handleCheckTodo = (e: boolean, todo: Todo) => {
+  const handleCheckTodo = (id: number, value: boolean) => {
     // チェックボックスの状態を変更
     const newTodoList = todoList.map((item) => {
       // 対象のIDのTodoのisCompleteを変更
-      if (item.id === todo.id) {
+      // Point：スプレッド構文を使用して、isCompleteを上書き
+      if (item.id === id) {
         return {
           ...item,
-          isComplete: e, // チェックボックスの状態を変更。スプレッド構文を使用して、isCompleteを上書きする
+          isComplete: value, // チェックボックスの状態を変更。スプレッド構文を使用して、isCompleteを上書きする
         };
       }
-
       // 対象のID以外のTodoはそのまま返す
       return item;
     });
-
-    console.log(newTodoList);
 
     // Todoリストを更新
     setTodoList(newTodoList);
@@ -91,24 +88,25 @@ export const TodoList = () => {
 
   /** タイトルの変更 */
   const handleChangeTitle = (id: number, title: string) => {
+    // タイトルの内容を変更
+    // Point：スプレッド構文を使用して、titleを上書き
     const newTodoList = todoList.map((item) => {
+      // 対象のIDのTodoのtitleを変更
       if (item.id === id) {
         return {
           ...item,
-          title: title, // チェックボックスの状態を変更。スプレッド構文を使用して、titleを上書きする
+          title: title,
         };
       }
       return item;
     });
-
-    console.log(newTodoList);
 
     // Todoリストを更新
     setTodoList(newTodoList);
   };
 
   return (
-    <div className="grid sm:grid-cols-2 gap-4">
+    <div className="grid md:grid-cols-2 gap-4">
       <div>
         <Card>
           <CardHeader>

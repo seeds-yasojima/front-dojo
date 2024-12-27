@@ -1,5 +1,6 @@
 import { CustomTabsTrigger } from "./components/custom-tabs-trigger";
 import { RootLayout } from "./components/layout/RootLayout";
+import { FirstLesson } from "./components/lesson/FirstLesson";
 import { TodoList } from "./components/sample/TodoList";
 import { Tabs, TabsContent, TabsList } from "./components/ui/tabs";
 
@@ -11,12 +12,19 @@ function App() {
       content: <TodoList />,
     },
     {
-      label: "Item1",
+      label: "チャレンジ課題１",
       value: "item1",
+      content: <FirstLesson />,
     },
     {
-      label: "Item2",
+      label: "チャレンジ課題２",
       value: "item2",
+      content: <>チャレンジ課題２</>,
+    },
+    {
+      label: "チャレンジ課題３",
+      value: "item3",
+      content: <>チャレンジ課題３</>,
     },
   ];
 

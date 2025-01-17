@@ -23,13 +23,11 @@ export const CompletedProgress: React.FC<Props> = ({ todoList }) => {
   }, [todoList]);
 
   return (
-    <div className="px-4 pb-3">
-      <div className="p-3 bg-slate-100 rounded">
-        <div className="text-xs text-muted-foreground mb-0.5">
-          タスク達成度：{completedRate}%
-        </div>
-        <Progress value={completedRate} />
+    <div className="px-6 pb-4">
+      <div className="text-xs text-muted-foreground mb-0.5">
+        タスク達成度：{completedRate}%
       </div>
+      <Progress value={completedRate} />
     </div>
   );
 };

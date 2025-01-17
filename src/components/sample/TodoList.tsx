@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   Card,
   CardContent,
@@ -106,7 +106,7 @@ export const TodoList = () => {
   };
 
   return (
-    <div className="grid md:grid-cols-2 gap-4">
+    <div className="grid md:grid-cols-3 gap-4">
       <div>
         <Card>
           <CardHeader>
@@ -142,7 +142,7 @@ export const TodoList = () => {
           </CardContent>
         </Card>
       </div>
-      <div>
+      <div className="col-span-2">
         <JsonCode data={JSON.stringify({ newTodoTitle, todoList }, null, 2)} />
       </div>
     </div>

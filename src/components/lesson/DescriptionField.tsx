@@ -27,9 +27,10 @@ const DescriptionField = () => {
             <dt className="font-semibold">要件：</dt>
             <dd className="leading-normal">
               <ul>
-                <li>投票項目を選択できる</li>
-                <li>投票ボタンを設置</li>
-                <li>投票数と投票割合をリアルタイムで表示</li>
+                <li>
+                  投票ボタン（「参加」「不参加」「検討中」）を設置してください
+                </li>
+                <li>各投票数と投票割合をリアルタイムで表示してください</li>
               </ul>
             </dd>
           </div>

@@ -12,19 +12,19 @@ function App() {
       content: <TodoList />,
     },
     {
-      label: "チャレンジ課題１",
+      label: "チャレンジ課題：投票アプリ",
       value: "item1",
       content: <FirstLesson />,
     },
     {
       label: "チャレンジ課題２",
       value: "item2",
-      content: <>チャレンジ課題２</>,
+      content: <>Comming Soon...</>,
     },
     {
       label: "チャレンジ課題３",
       value: "item3",
-      content: <>チャレンジ課題３</>,
+      content: <>Comming Soon...</>,
     },
   ];
 

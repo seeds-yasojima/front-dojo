@@ -47,30 +47,15 @@ const VotingApp = () => {
 
   const totalCount = votes.reduce((acc, vote) => acc + vote.count, 0);
 
+  const getVoteRate = (count: number) => {
+    const rate = Math.round((count / totalCount) * 100);
+    return rate;
+  };
+
   return (
     <div>
       <h1 className="font-bold mb-1">投票アプリ</h1>
-      <div className="p-4 bg-slate-200 rounded-sm">
-        <div className="text-xs text-muted-foreground">
-          投票数: {totalCount}票
-        </div>
-        <div className="space-y-1 mt-1">
-          {votes.map((vote) => {
-            const rate = (vote.count / totalCount) * 100;
-            return (
-              <div key={vote.id} className="flex items-center gap-2">
-                <div className="w-32 text-sm">
-                  {vote.label}：<span>{vote.count}</span>票
-                </div>
-                <div className="flex-1">
-                  <Progress value={rate} />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-      <div className="flex gap-2 mt-3">
+      <div className="flex gap-2">
         {votes.map((option) => (
           <Button
             key={option.id}
@@ -80,6 +65,26 @@ const VotingApp = () => {
             {option.label}
           </Button>
         ))}
+      </div>
+      <div className="p-4 bg-slate-200 rounded-sm mt-3">
+        <div className="text-xs text-muted-foreground">
+          投票数: {totalCount}票
+        </div>
+        <div className="space-y-1 mt-1">
+          {votes.map((vote) => {
+            const rate = getVoteRate(vote.count);
+            return (
+              <div key={vote.id} className="flex items-center gap-2">
+                <div className="w-1/3 text-sm">
+                  {vote.label}：<span>{vote.count}</span>票（{rate || 0}%）
+                </div>
+                <div className="flex-1">
+                  <Progress value={rate} />
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

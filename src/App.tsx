@@ -30,7 +30,7 @@ function App() {
 
   return (
     <RootLayout>
-      <Tabs defaultValue="todo" className="w-full">
+      <Tabs defaultValue="item1" className="w-full">
         <TabsList className="w-full justify-start border-b border-border bg-transparent p-0 rounded-none">
           {tabs.map((tab) => (
             <CustomTabsTrigger key={tab.value} value={tab.value}>

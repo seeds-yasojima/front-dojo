@@ -6,6 +6,24 @@ import {
   CardTitle,
 } from "../ui/card";
 
+const codeSample = `const voteValues = [
+  {
+    id: "attendance",
+    label: "参加",
+    count: 0,
+  },
+  {
+    id: "absence",
+    label: "不参加",
+    count: 0,
+  },
+  {
+    id: "consideration",
+    label: "検討中",
+    count: 0,
+  },
+];`;
+
 const DescriptionField = () => {
   return (
     <Card>
@@ -32,6 +50,14 @@ const DescriptionField = () => {
                 </li>
                 <li>各投票数と投票割合をリアルタイムで表示してください</li>
               </ul>
+            </dd>
+          </div>
+          <div>
+            <dt className="font-semibold">提供データ：</dt>
+            <dd className="leading-normal">
+              <pre className="bg-slate-950 text-white p-3 rounded-sm whitespace-pre-wrap">
+                {codeSample}
+              </pre>
             </dd>
           </div>
         </dl>

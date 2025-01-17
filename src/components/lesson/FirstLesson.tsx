@@ -98,9 +98,9 @@ export const FirstLesson = () => {
       <div>
         <DescriptionField />
       </div>
-      <div>
+      {/* <div>
         <VotingApp />
-      </div>
+      </div> */}
     </div>
   );
 };

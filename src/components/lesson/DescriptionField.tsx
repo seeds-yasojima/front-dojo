@@ -38,24 +38,29 @@ const DescriptionField = () => {
           <div>
             <dt className="font-semibold">課題内容：</dt>
             <dd className="leading-normal">
-              投票項目を選んで結果を表示するアプリを作成してください。
+              投票項目を選んで結果を表示するアプリを作成してください
             </dd>
           </div>
           <div>
             <dt className="font-semibold">要件：</dt>
             <dd className="leading-normal">
-              <ul>
+              <ul className="list-disc list-inside">
                 <li>
                   投票ボタン（「参加」「不参加」「検討中」）を設置してください
                 </li>
-                <li>各投票数と投票割合をリアルタイムで表示してください</li>
+                <li>
+                  各投票数と各投票割合を、投票ボタンと連動した形で表示してください
+                </li>
+                <li>
+                  プログレスバーを使って投票割合を視覚的に表現してください
+                </li>
+                <li>下記の提供データを用いて実装してください</li>
               </ul>
             </dd>
           </div>
           <div>
             <dt className="font-semibold">提供データ：</dt>
             <dd className="leading-normal mt-1">
-              下記のデータを用いて実装してください。
               <pre className="bg-slate-950 text-white p-3 rounded-sm whitespace-pre-wrap">
                 {codeSample}
               </pre>

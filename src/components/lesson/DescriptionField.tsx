@@ -54,7 +54,8 @@ const DescriptionField = () => {
           </div>
           <div>
             <dt className="font-semibold">提供データ：</dt>
-            <dd className="leading-normal">
+            <dd className="leading-normal mt-1">
+              下記のデータを用いて実装してください。
               <pre className="bg-slate-950 text-white p-3 rounded-sm whitespace-pre-wrap">
                 {codeSample}
               </pre>
